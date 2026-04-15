@@ -157,5 +157,11 @@ class Program
         double finalTotal = grandTotal - discount;
         Console.WriteLine("Final Total: ₱" + finalTotal);
 
+        Console.WriteLine("\n=== UPDATED STOCK ===");
+        foreach (var p in products)
+        {
+            Console.WriteLine($"{p.Name} - Remaining: {p.RemainingStock}");
+        }
+
     }
 }
