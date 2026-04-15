@@ -98,6 +98,30 @@ class Program
                     break;
                 }
             }
+                    if (!found)
+            {
+                if (cartCount >= cart.Length)
+                {
+                    Console.WriteLine("Cart is full.");
+                    continue;
+                }
+
+                cart[cartCount] = new CartItem
+                {
+                    Product = selectedProduct,
+                    Quantity = quantity
+                };
+                cart[cartCount].UpdateSubtotal();
+                cartCount++;
+            }
+
+            selectedProduct.DeductStock(quantity);
+
+            Console.WriteLine("Added to cart!");
+            Console.WriteLine(" ");
+            Console.Write("Add another item? (Y/N): ");
+            choice = Console.ReadLine();
+        }
 
     }
 }
