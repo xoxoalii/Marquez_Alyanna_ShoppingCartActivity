@@ -45,5 +45,16 @@ class Program
         {
             p.DisplayProduct();
         }
+        
+        Console.Write("Enter product number: ");
+        if (!int.TryParse(Console.ReadLine(), out int productNumber) ||
+            productNumber < 1 || productNumber > products.Length)
+        {
+            Console.WriteLine("Invalid product number.");
+            continue;
+        }
+
+        Product selectedProduct = products[productNumber - 1];   
+        
     }
 }
