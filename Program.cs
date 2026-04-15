@@ -52,6 +52,19 @@ class Program
             new Product { Id = 4, Name = "Refrigerator", Price = 13000, RemainingStock = 3 }
         };
 
+        CartItem[] cart = new CartItem[5];
+        int cartCount = 0;
+
+        string choice = "Y";
+
+        while (choice.ToUpper() == "Y")
+        {
+            Console.WriteLine("\n=== PRODUCT MENU ===");
+            foreach (var p in products)
+            {
+                p.DisplayProduct();
+            }
+
         Console.WriteLine("=== STORE MENU ===");
         foreach (var p in products)
         {
@@ -122,6 +135,27 @@ class Program
             Console.Write("Add another item? (Y/N): ");
             choice = Console.ReadLine();
         }
+
+                Console.WriteLine("\n=== RECEIPT ===");
+        double grandTotal = 0;
+
+        for (int i = 0; i < cartCount; i++)
+        {
+            Console.WriteLine($"{cart[i].Product.Name} x{cart[i].Quantity} = ₱{cart[i].Subtotal}");
+            grandTotal += cart[i].Subtotal;
+        }
+
+        Console.WriteLine($"Grand Total: ₱{grandTotal}");
+
+        double discount = 0;
+        if (grandTotal >= 5000)
+        {
+            discount = grandTotal * 0.10;
+            Console.WriteLine("Discount (10%): ₱" + discount);
+        }
+
+        double finalTotal = grandTotal - discount;
+        Console.WriteLine("Final Total: ₱" + finalTotal);
 
     }
 }
