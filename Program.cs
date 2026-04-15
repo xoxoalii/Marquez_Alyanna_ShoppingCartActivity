@@ -55,6 +55,24 @@ class Program
         }
 
         Product selectedProduct = products[productNumber - 1];   
-        
+
+                    if (selectedProduct.RemainingStock == 0)
+            {
+                Console.WriteLine("This product is out of stock.");
+                continue;
+            }
+
+            Console.Write("Enter quantity: ");
+            if (!int.TryParse(Console.ReadLine(), out int quantity) || quantity <= 0)
+            {
+                Console.WriteLine("Invalid quantity.");
+                continue;
+            }
+
+            if (!selectedProduct.HasEnoughStock(quantity))
+            {
+                Console.WriteLine("Not enough stock available.");
+                continue;
+            }
     }
 }
