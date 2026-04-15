@@ -11,6 +11,21 @@ class Product
     {
         Console.WriteLine($"{Id}. {Name} - ₱{Price} (Stock: {RemainingStock})");
     }
+    
+    public double GetItemTotal(int quantity)
+    {
+        return Price * quantity;
+    }
+
+    public bool HasEnoughStock(int quantity)
+    {
+        return quantity <= RemainingStock;
+    }
+
+    public void DeductStock(int quantity)
+    {
+        RemainingStock -= quantity;
+    }
 }
 
 class Program
