@@ -86,5 +86,18 @@ class Program
                 Console.WriteLine("Not enough stock available.");
                 continue;
             }
+        
+            bool found = false;
+            for (int i = 0; i < cartCount; i++)
+            {
+                if (cart[i].Product.Id == selectedProduct.Id)
+                {
+                    cart[i].Quantity += quantity;
+                    cart[i].UpdateSubtotal();
+                    found = true;
+                    break;
+                }
+            }
+
     }
 }
