@@ -63,7 +63,7 @@ class Program
             foreach (var p in products)
             {
                 p.DisplayProduct();
-            }
+        }
         
         Console.Write("Enter product number: ");
         if (!int.TryParse(Console.ReadLine(), out int productNumber) ||
@@ -158,5 +158,6 @@ class Program
         Console.WriteLine($"{p.Name} - Remaining: {p.RemainingStock}");
     }
 
-    }
 }
+}
+
