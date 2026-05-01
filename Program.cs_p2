@@ -242,5 +242,36 @@ class Program
 
                        double change = payment - finalTotal;
 
+                        receipts[historyCount] = new Receipt
+                        {
+                            Number = receiptNumber,
+                            Date = DateTime.Now,
+                            Items = items,
+                            Total = total,
+                            Discount = discount,
+                            FinalTotal = finalTotal,
+                            Payment = payment,
+                            Change = change
+                        };
+
+                        orderHistory[historyCount] =
+                            $"Receipt #{receiptNumber:D4} - Final Total: PHP {finalTotal}";
+
+                        historyCount++;
+                        receiptNumber++;
+                        cartCount = 0;
+
+                        Console.WriteLine($"Change: ₱{change}");
+                        break;
+                    }
+
+                    else if (cartChoice == 6)
+                    {
+                        break;
+                    }
+                }
+            }
+
+
 }
   
