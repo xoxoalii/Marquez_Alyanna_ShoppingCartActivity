@@ -158,6 +158,32 @@ class Program
 
                         Console.WriteLine("Updated!");
                     }
+                    else if (cartChoice == 3)
+                    {
+                        if (cartCount == 0)
+                        {
+                            Console.WriteLine("Cart is empty.");
+                            continue;
+                        }
+
+                        Console.WriteLine("\n========== CART ITEMS ==========");
+                        for (int i = 0; i < cartCount; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {cart[i].Product.Name} x{cart[i].Quantity}");
+                        }
+
+                        Console.Write("Select item to remove: ");
+                        int index = int.Parse(Console.ReadLine());
+
+                        cart[index - 1].Product.RemainingStock += cart[index - 1].Quantity;
+
+                        for (int i = index - 1; i < cartCount - 1; i++)
+                            cart[i] = cart[i + 1];
+
+                        cartCount--;
+
+                        Console.WriteLine("Removed!");
+                    }
 
 }
   
