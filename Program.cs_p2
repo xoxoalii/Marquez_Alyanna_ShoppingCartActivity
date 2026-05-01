@@ -90,5 +90,74 @@ class Program
                 Console.WriteLine("Added to cart!");
             }
 
+            else if (choice == 2)
+            {
+                while (true)
+                {
+                    Console.WriteLine("\n========== CART MANAGEMENT ==========");
+                    Console.WriteLine("1. View Cart");
+                    Console.WriteLine("2. Update Quantity");
+                    Console.WriteLine("3. Remove Item");
+                    Console.WriteLine("4. Clear Cart");
+                    Console.WriteLine("5. Checkout");
+                    Console.WriteLine("6. Back");
+
+                    Console.Write("Choose: ");
+                    if (!int.TryParse(Console.ReadLine(), out int cartChoice))
+                    {
+                        Console.WriteLine("Invalid.");
+                        continue;
+                    }
+                    if (cartChoice == 1)
+                    {
+                        Console.WriteLine("\n========== YOUR CART ==========");
+
+                        if (cartCount == 0)
+                        {
+                            Console.WriteLine("Cart is empty.");
+                            continue;
+                        }
+
+                        for (int i = 0; i < cartCount; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {cart[i].Product.Name} x{cart[i].Quantity} = ₱{cart[i].Subtotal}");
+                        }
+                    }
+                    else if (cartChoice == 2)
+                    {
+                        if (cartCount == 0)
+                        {
+                            Console.WriteLine("Cart is empty.");
+                            continue;
+                        }
+
+                        Console.WriteLine("\n========== CART ITEMS ==========");
+                        for (int i = 0; i < cartCount; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {cart[i].Product.Name} x{cart[i].Quantity}");
+                        }
+
+                        Console.Write("Select item to update: ");
+                        int index = int.Parse(Console.ReadLine());
+
+                        Console.Write("Enter new quantity: ");
+                        int newQty = int.Parse(Console.ReadLine());
+
+                        CartItem item = cart[index - 1];
+                        int diff = newQty - item.Quantity;
+
+                        if (diff > item.Product.RemainingStock)
+                        {
+                            Console.WriteLine("Not enough stock.");
+                            continue;
+                        }
+
+                        item.Product.RemainingStock -= diff;
+                        item.Quantity = newQty;
+                        item.UpdateSubtotal();
+
+                        Console.WriteLine("Updated!");
+                    }
+
 }
   
