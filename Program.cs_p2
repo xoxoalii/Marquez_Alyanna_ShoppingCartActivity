@@ -37,7 +37,58 @@ class Program
             {
                 Console.WriteLine("Invalid input.");
                 continue;
-}
+            }
+
+            if (choice == 1)
+            {
+                Console.Write("Enter product number: ");
+                if (!int.TryParse(Console.ReadLine(), out int num) || num < 1 || num > products.Length)
+                {
+                    Console.WriteLine("Invalid.");
+                    continue;
+                }
+
+                Product selected = products[num - 1];
+
+                Console.Write("Enter quantity: ");
+                if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
+                {
+                    Console.WriteLine("Invalid quantity.");
+                    continue;
+                }
+
+                if (qty > selected.RemainingStock)
+                {
+                    Console.WriteLine("Not enough stock.");
+                    continue;
+                }
+
+                bool found = false;
+                for (int i = 0; i < cartCount; i++)
+                {
+                    if (cart[i].Product.Id == selected.Id)
+                    {
+                        cart[i].Quantity += qty;
+                        cart[i].UpdateSubtotal();
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    cart[cartCount] = new CartItem
+                    {
+                        Product = selected,
+                        Quantity = qty
+                    };
+                    cart[cartCount].UpdateSubtotal();
+                    cartCount++;
+                }
+
+                selected.RemainingStock -= qty;
+                Console.WriteLine("Added to cart!");
+            }
 
 }
   
