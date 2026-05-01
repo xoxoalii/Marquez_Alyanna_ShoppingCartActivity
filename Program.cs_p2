@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Product[] products = new Product[]
+        {
+            new Product { Id = 1, Name = "Television", Price = 30000, RemainingStock = 5 },
+            new Product { Id = 2, Name = "Washing Machine", Price = 5000, RemainingStock = 10 },
+            new Product { Id = 3, Name = "Speaker", Price = 800, RemainingStock = 7 },
+            new Product { Id = 4, Name = "Refrigerator", Price = 13000, RemainingStock = 3 }
+        };
+
+        string[] orderHistory = new string[20];
+        Receipt[] receipts = new Receipt[20];
+        int historyCount = 0;
+        int receiptNumber = 1;
+
+        CartItem[] cart = new CartItem[10];
+        int cartCount = 0;
+
+        while (true)
+        {
+            Console.WriteLine("\n========== PRODUCT LIST ==========");
+            foreach (var p in products)
+                p.DisplayProduct();
+
+            Console.WriteLine("\n=== MAIN MENU ===");
+            Console.WriteLine("1. Buy Products");
+            Console.WriteLine("2. Cart Management");
+            Console.WriteLine("3. Order History");
+            Console.WriteLine("0. Exit");
+}
+        }
+    }
+}
