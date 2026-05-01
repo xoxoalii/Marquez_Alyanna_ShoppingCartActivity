@@ -44,6 +44,8 @@ class Program
 {
     static void Main()
     {
+        while (true)
+        {
         Product[] products = new Product[]
         {
             new Product { Id = 1, Name = "Television", Price = 30000, RemainingStock = 5 },
@@ -157,6 +159,9 @@ class Program
     {
         Console.WriteLine($"{p.Name} - Remaining: {p.RemainingStock}");
     }
+    if (choice == "N")
+    break;
+}
 
 }
 }
