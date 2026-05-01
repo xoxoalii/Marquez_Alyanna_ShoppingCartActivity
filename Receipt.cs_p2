@@ -1,0 +1,13 @@
+using System;
+
+class Receipt
+{
+    public int Number;
+    public DateTime Date;
+    public string Items;
+    public double Total;
+    public double Discount;
+    public double FinalTotal;
+    public double Payment;
+    public double Change;
+}
