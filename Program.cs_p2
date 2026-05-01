@@ -272,6 +272,37 @@ class Program
                 }
             }
 
+            else if (choice == 3)
+            {
+                Console.WriteLine("\nORDER HISTORY");
+                for (int i = 0; i < historyCount; i++)
+                {
+                    Console.WriteLine(orderHistory[i]);
+                }
+
+                Console.Write("\nEnter receipt number to view details (0 to back): ");
+                int r = int.Parse(Console.ReadLine());
+
+                if (r > 0 && r <= historyCount)
+                {
+                    Receipt rec = receipts[r - 1];
+
+                    Console.WriteLine("\n========== FULL RECEIPT ==========");
+                    Console.WriteLine($"Receipt No: {rec.Number:D4}");
+                    Console.WriteLine($"Date: {rec.Date.ToString("MMMM dd, yyyy h:mm tt")}");
+
+                    Console.WriteLine("\nItems:");
+                    Console.WriteLine(rec.Items);
+
+                    Console.WriteLine($"Grand Total: ₱{rec.Total}");
+                    Console.WriteLine($"Discount: ₱{rec.Discount}");
+                    Console.WriteLine($"Final Total: ₱{rec.FinalTotal}");
+                    Console.WriteLine($"Payment: ₱{rec.Payment}");
+                    Console.WriteLine($"Change: ₱{rec.Change}");
+                }
+            }
+
+
 
 }
   
