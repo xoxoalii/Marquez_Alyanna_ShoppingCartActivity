@@ -4,7 +4,7 @@
 This project is a console-based shopping cart system written in C#. It allows users to browse products, select items, manage a cart, and complete checkout transactions while tracking stock levels. The system also generates receipts and maintains an order history for completed purchases.
 
 ## Features
-##Product Management
+### Product Management
 -	Displays product list with price and stock
 -	Prevents purchasing out-of-stock items
 -	Automatically updates stock after purchase
