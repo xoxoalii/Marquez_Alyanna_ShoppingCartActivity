@@ -183,7 +183,15 @@ class Program
                         cartCount--;
 
                         Console.WriteLine("Removed!");
-                    }
+                        }
+                   else if (cartChoice == 4)
+                   {
+                       for (int i = 0; i < cartCount; i++)
+                           cart[i].Product.RemainingStock += cart[i].Quantity;
+
+                       cartCount = 0;
+                       Console.WriteLine("Cart cleared.");
+                   }
 
 }
   
