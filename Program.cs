@@ -44,8 +44,6 @@ class Program
 {
     static void Main()
     {
-        while (true)
-        {
         Product[] products = new Product[]
         {
             new Product { Id = 1, Name = "Television", Price = 30000, RemainingStock = 5 },
@@ -53,6 +51,9 @@ class Program
             new Product { Id = 3, Name = "Speaker", Price = 800, RemainingStock = 7 },
             new Product { Id = 4, Name = "Refrigerator", Price = 13000, RemainingStock = 3 }
         };
+
+    while (true)
+        {
 
         CartItem[] cart = new CartItem[5];
         int cartCount = 0;
