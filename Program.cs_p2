@@ -192,6 +192,55 @@ class Program
                        cartCount = 0;
                        Console.WriteLine("Cart cleared.");
                    }
+                   else if (cartChoice == 5)
+                   {
+                       if (cartCount == 0)
+                       {
+                           Console.WriteLine("Cart is empty.");
+                           continue;
+                       }
+
+                       double total = 0;
+                       string items = "";
+
+                       Console.WriteLine("\n========== ORDER SUMMARY ==========");
+
+                       for (int i = 0; i < cartCount; i++)
+                       {
+                           Console.WriteLine($"{cart[i].Product.Name} x{cart[i].Quantity} = ₱{cart[i].Subtotal}");
+                           total += cart[i].Subtotal;
+                           items += $"{cart[i].Product.Name} x{cart[i].Quantity} = ₱{cart[i].Subtotal}\n";
+                       }
+
+                       double discount = total >= 5000 ? total * 0.10 : 0;
+                       double finalTotal = total - discount;
+
+                       Console.WriteLine("\n========== PAYMENT BREAKDOWN ==========");
+                       Console.WriteLine($"Subtotal: ₱{total}");
+                       Console.WriteLine($"Discount: ₱{discount}");
+                       Console.WriteLine($"TOTAL TO PAY: ₱{finalTotal}");
+
+                       double payment;
+
+                       while (true)
+                       {
+                           Console.Write("Enter payment: ");
+                           if (!double.TryParse(Console.ReadLine(), out payment))
+                           {
+                               Console.WriteLine("Invalid input.");
+                               continue;
+                           }
+
+                           if (payment < finalTotal)
+                           {
+                               Console.WriteLine("Insufficient payment.");
+                               continue;
+                           }
+
+                           break;
+                       }
+
+                       double change = payment - finalTotal;
 
 }
   
