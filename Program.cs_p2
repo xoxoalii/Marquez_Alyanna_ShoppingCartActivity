@@ -31,7 +31,13 @@ class Program
             Console.WriteLine("2. Cart Management");
             Console.WriteLine("3. Order History");
             Console.WriteLine("0. Exit");
+
+            Console.Write("Choose: ");
+            if (!int.TryParse(Console.ReadLine(), out int choice))
+            {
+                Console.WriteLine("Invalid input.");
+                continue;
 }
-        }
-    }
+
 }
+  
